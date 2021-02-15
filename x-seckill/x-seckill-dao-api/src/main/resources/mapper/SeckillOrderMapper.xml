@@ -1,0 +1,40 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qinxie.seckill.dao.mapper.SeckillOrderMapper">
+    <resultMap type="com.qinxie.seckill.dao.dto.SeckillOrderPo" id="orderMap">
+        <id column="order_id" property="orderId" javaType="java.lang.String"/>
+        <result column="raw_pay_money" property="rawPayMoney" javaType="java.math.BigDecimal"/>
+        <result column="real_pay_money" property="realPayMoney" javaType="java.math.BigDecimal"/>
+        <result column="user_id" property="userId" javaType="java.lang.String"/>
+        <result column="create_time" property="createTime" javaType="java.util.Date"/>
+        <result column="pay_time" property="payTime" javaType="java.util.Date"/>
+        <result column="good_id" property="goodId" javaType="java.lang.Long"/>
+        <result column="good_count" property="goodCount" javaType="java.lang.Integer"/>
+        <result column="seckill_type" property="seckillType" javaType="java.lang.String"/>
+        <result column="order_status" property="orderStatus" javaType="java.lang.String"/>
+        <result column="update_time" property="updateTime" javaType="java.util.Date"/>
+    </resultMap>
+
+   <insert id="insertEntity" parameterType="com.qinxie.seckill.dao.dto.SeckillOrderPo" >
+       insert table seckill_order ('order_id',
+                                   'raw_pay_money',
+                                   'real_pay_money',
+                                   'user_id',
+                                   'good_id',
+                                   'good_count',
+                                   'seckill_type',
+                                   'order_status'
+                                  ) values
+                                   (
+                                     #{entity.orderId},
+                                     #{entity.rawPayMoney},
+                                     #{entity.realPayMoney},
+                                     #{entity.userId},
+                                     #{entity.goodId},
+                                     #{entity.goodCount},
+                                     #{entity.seckillType},
+                                     #{entity.orderStatus}
+                                   );
+   </insert>
+</mapper>

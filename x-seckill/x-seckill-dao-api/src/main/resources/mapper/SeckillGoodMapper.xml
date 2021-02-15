@@ -1,0 +1,49 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qinxie.seckill.dao.mapper.SeckillGoodMapper">
+    <resultMap type="com.qinxie.seckill.dao.dto.SeckillGoodPo" id="goodMap">
+        <id column="id" property="id"/>
+        <result column="good_title" property="goodTitle" javaType="java.lang.String"/>
+        <result column="good_desc" property="goodDesc" javaType="java.lang.String"/>
+        <result column="good_price" property="goodPrice" javaType="java.math.BigDecimal"/>
+        <result column="good_discount_price" property="goodDiscountPrice" javaType="java.math.BigDecimal"/>
+        <result column="create_time" property="createTime" javaType="java.util.Date"/>
+        <result column="start_seckill_time" property="startSeckillTime" javaType="java.util.Date"/>
+        <result column="end_seckill_time" property="endSeckillTime" javaType="java.util.Date"/>
+        <result column="stock_count" property="stockCount" javaType="java.lang.Integer"/>
+        <result column="stock_raw_count" property="stockRawCount" javaType="java.lang.Integer"/>
+    </resultMap>
+
+    <!--根据id获取物品 -->
+    <select id="findGoodById" resultMap="goodMap" parameterType="java.lang.Long">
+        select id,
+            good_title,
+            good_desc,
+            good_price,
+            good_discount_price,
+            create_time,
+            start_seckill_time,
+            end_seckill_time,
+            stock_count,
+            stock_raw_count
+        from seckill_good
+        where id=#{id}
+    </select>
+
+    <select id="findGoodList" resultMap="goodMap">
+        select id,
+            good_title,
+            good_desc,
+            good_price,
+            good_discount_price,
+            create_time,
+            start_seckill_time,
+            end_seckill_time,
+            stock_count,
+            stock_raw_count
+        from seckill_good
+    </select>
+
+</mapper>
